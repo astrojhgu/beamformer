@@ -4,9 +4,6 @@ use beamformer::{
     station::{
         Station
     }
-    , utils::{
-        angle2xyz
-    }
 };
 
 use rspfb::{
@@ -23,8 +20,7 @@ use ndarray_npy::{
 };
 
 use rand::{
-    Rng
-    , thread_rng
+    thread_rng
 };
 
 use rand_distr::{Distribution, Normal};
@@ -38,7 +34,7 @@ fn main() {
     let normal=Normal::new(0.0, 1.0).unwrap();
     let signal:Vec<_>=normal.sample_iter(thread_rng()).take(signal_len).collect();
     
-    let output=station.acquire(0.0, 45_f64.to_radians(), &signal, &[0.0, 0.0]);
+    let output=station.acquire(0.0, 45_f64.to_radians(), &signal, &dd);
     //println!("{:?}", angle2xyz(90_f64.to_radians(), 5_f64.to_radians()));
     let outfile=std::fs::File::create("a.npz").unwrap();
     let mut npz=NpzWriter::new(outfile);

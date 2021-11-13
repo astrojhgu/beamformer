@@ -63,7 +63,7 @@ pub struct Station{
 impl Station{
     pub fn new(pos: &[[f64;3]], ncoarse_ch: usize, coeff_stage1: ArrayView1<f64>, delayer: FracDelayer<f64>, dt: f64)->Self{
         let ants:Vec<_>=pos.iter().map(|pos|{
-            Antenna::new(pos.clone(), ncoarse_ch, coeff_stage1.clone(), delayer.clone())
+            Antenna::new(*pos, ncoarse_ch, coeff_stage1, delayer.clone())
         }).collect();
 
         Station{ants, dt}
@@ -119,6 +119,6 @@ pub fn cfg2station(cfg: &StationCfg)->Station{
     let coeff1=coeff::<f64>(nch, tap, k);
     let pos=&cfg.pos;
     let delayer=cfg2delayer(&cfg.delayer);
-    Station::new(&pos,nch, coeff1.view(), delayer, dt)
+    Station::new(pos,nch, coeff1.view(), delayer, dt)
 }
 

@@ -1,7 +1,7 @@
 
 #![allow(non_snake_case)]
 //use ndarray::parallel::prelude::*;
-use ndarray::{s, Array1, Array2, ArrayView1, ArrayView2, Axis};
+use ndarray::{Array2, Axis};
 use num_complex::Complex;
 use num_traits::{Float, FloatConst};
 
