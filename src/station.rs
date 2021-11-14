@@ -116,7 +116,7 @@ pub fn cfg2station(cfg: &StationCfg)->Station{
     let tap=cfg.coarse_ch.tap;
     let k=cfg.coarse_ch.k;
     let dt=cfg.dt;
-    let coeff1=coeff::<f64>(nch, tap, k);
+    let coeff1=coeff::<f64>(nch/2, tap, k);
     let pos=&cfg.pos;
     let delayer=cfg2delayer(&cfg.delayer);
     Station::new(pos,nch, coeff1.view(), delayer, dt)
