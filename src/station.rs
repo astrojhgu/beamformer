@@ -15,7 +15,7 @@ use rspfb::{
         FracDelayer
         , cfg2delayer
     }
-    , windowed_fir::{coeff}
+    , windowed_fir::{pfb_coeff}
 };
 
 
@@ -104,7 +104,7 @@ pub fn preferred_station(pos: &[[f64;3]], delayer: FracDelayer<f64>, dt: f64)->S
     let nch1=1024;
     let tap1=20;
     let k1=1.6;
-    let coeff1 = coeff::<f64>(nch1, tap1, k1);
+    let coeff1 = pfb_coeff::<f64>(nch1, tap1, k1);
     //let coeff2 = coeff::<f64>(nch2*2, tap2, Some(k2));
 
     Station::new(pos, nch1, coeff1.view(), delayer, dt)
@@ -116,7 +116,7 @@ pub fn cfg2station(cfg: &StationCfg)->Station{
     let tap=cfg.coarse_ch.tap;
     let k=cfg.coarse_ch.k;
     let dt=cfg.dt;
-    let coeff1=coeff::<f64>(nch/2, tap, k);
+    let coeff1=pfb_coeff::<f64>(nch/2, tap, k);
     let pos=&cfg.pos;
     let delayer=cfg2delayer(&cfg.delayer);
     Station::new(pos,nch, coeff1.view(), delayer, dt)

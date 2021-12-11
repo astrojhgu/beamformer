@@ -17,7 +17,7 @@ use rspfb::{
         , cfg2delayer
     }
     , windowed_fir::{
-        coeff
+        pfb_coeff
     }
     , cfg::{
         DelayerCfg
