@@ -11,7 +11,7 @@ use beamformer::{
     }
 };
 
-use rspfb::{
+use rsdsp::{
     frac_delayer::{
         FracDelayer
         , cfg2delayer

@@ -7,7 +7,7 @@ use num_complex::Complex64;
 use rand::{thread_rng, Rng};
 //use num_traits::{Float, FloatConst, NumAssign, NumCast};
 
-use rspfb::{
+use rsdsp::{
     ospfb::{
         Analyzer
     }
